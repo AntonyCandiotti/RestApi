@@ -4,7 +4,7 @@ CREATE DATABASE express_practice;
 -- Usar la base de datos
 USE express_practice;
 
--- Crear la tabla de usuarios
+-- Crear la tabla de usuarios -- Crear la tabla de tareas -- Insertar usuarios de prueba -- Insertar tareas de prueba
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -12,7 +12,10 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Crear la tabla de tareas
+INSERT INTO users (name, email) VALUES
+('Alice', 'alice@example.com'),
+('Bob', 'bob@example.com');
+
 CREATE TABLE tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -23,12 +26,6 @@ CREATE TABLE tasks (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- Insertar usuarios de prueba
-INSERT INTO users (name, email) VALUES
-('Alice', 'alice@example.com'),
-('Bob', 'bob@example.com');
-
--- Insertar tareas de prueba
 INSERT INTO tasks (user_id, title, description, status) VALUES
 (1, 'Buy groceries', 'Buy milk, eggs, and bread', 'pending'),
 (2, 'Finish project', 'Complete the Express.js project', 'completed'),
